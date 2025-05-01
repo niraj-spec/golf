@@ -1,0 +1,969 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+* ::-moz-selection {
+  background-color: white;
+  color: #95C11A;
+}
+* ::selection {
+  background-color: white;
+  color: #95C11A;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  background-color: black;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+}
+main .cursor {
+  height: 20px;
+  width: 20px;
+  background-color: #95C11E;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 99;
+}
+main .cursor-blur {
+  height: 300px;
+  width: 300px;
+  background-color: #95C11E;
+  border-radius: 50%;
+  position: fixed;
+  filter: blur(30px);
+  z-index: -1;
+}
+
+.head {
+  width: 100%;
+  position: relative;
+}
+.head .video {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.37);
+  z-index: -99;
+  opacity: 0.7;
+}
+.head .video video {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-color: rgba(0, 0, 0, 0.37);
+  z-index: -99;
+}
+.head .heading {
+  width: 70%;
+  position: absolute;
+  text-align: center;
+  left: 15%;
+  right: 20%;
+  top: 20%;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.head .heading h1 {
+  line-height: 0.9em;
+  text-shadow: 50%;
+  font-size: 10em;
+  color: black;
+  text-transform: uppercase;
+  text-shadow: -1px -1px 0 #95c11e, 1px -1px 0 #95c11e, -1px 1px 0 #95c11e, 1px 1px 0 #95c11e;
+  position: relative;
+}
+.head .heading h1:before {
+  content: "Eat. Drink. Play.";
+  position: absolute;
+  color: white;
+  top: -6px;
+  left: -6px;
+  -webkit-text-stroke: 2px #95C11E;
+}
+.head .heading h3 {
+  font-size: 2em;
+  text-transform: uppercase;
+}
+.head .heading p {
+  padding: 0.5em 7em;
+  font-size: 1.5em;
+}
+.head .arrow {
+  width: 12%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  position: absolute;
+  left: -3%;
+  top: 64%;
+  border: 1px solid white;
+}
+.head .marquee {
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.head .marquee .text-marquee {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 2em;
+  white-space: nowrap;
+  -webkit-text-stroke: 2px #95C11E;
+  font-weight: 900;
+  animation-name: move;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  white-space: nowrap;
+}
+.head .marquee .text-marquee p {
+  display: inline;
+  font-size: 5em;
+  color: transparent;
+  white-space: nowrap;
+}
+.head .marquee .text-marquee p:hover {
+  color: #95C11E;
+}
+
+.marquee::-webkit-scrollbar {
+  display: none;
+}
+
+nav {
+  padding-top: 2em;
+  position: fixed;
+  z-index: 99;
+  padding-left: 8em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  gap: 3em;
+}
+nav img {
+  width: 7%;
+}
+nav ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 3em;
+  font-size: 1.1em;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+nav .sidebar {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  list-style: none;
+  top: 0%;
+  gap: 2em;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 2em;
+  right: 0%;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.384);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+nav .sidebar a {
+  font-size: 2em;
+}
+nav .sidebar i {
+  font-size: 2em;
+}
+nav .menu {
+  display: none;
+  position: fixed;
+  right: 4%;
+  list-style: none;
+}
+nav .menu i {
+  font-size: 2em;
+}
+
+.about-us {
+  width: 100%;
+  padding: 5em;
+  padding-top: 5em;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.37);
+}
+.about-us .image {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.about-us .image .image1 {
+  width: 13%;
+  opacity: 0.7;
+}
+.about-us .image .image1 img {
+  border-radius: 1em;
+  width: 100%;
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.about-us .about-info {
+  color: white;
+  position: absolute;
+  top: 10%;
+  left: 24%;
+  width: 50%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.about-us .about-info h1 {
+  font-size: 3.5em;
+  padding-bottom: 0.5em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+.about-us .about-info p {
+  font-size: 1.3em;
+  line-height: 1.5em;
+  padding-bottom: 0.5em;
+}
+.about-us .about-info span {
+  font-size: 1.5em;
+}
+
+.card {
+  padding: 0 7em;
+  z-index: 2;
+  opacity: 0.8;
+  padding: 4em;
+  width: 100%;
+  background-image: url("dots-white.svg");
+  background-size: 15%;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.37);
+}
+.card .card-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4em;
+}
+.card .card-container .card1 {
+  border-radius: 2em;
+  width: 30%;
+  background-image: url("home-toptracer (1).avif");
+  height: 95vh;
+  padding: 2em;
+  background-size: cover;
+  background-position: center;
+  transition: all ease 1s;
+}
+.card .card-container .card1 h1 {
+  text-transform: uppercase;
+  padding-top: 1em;
+  color: black;
+  font-size: 3em;
+  font-weight: 900;
+  opacity: 0;
+}
+.card .card-container .card1 p {
+  color: black;
+  padding-top: 0.5em;
+  font-size: 1.3em;
+  line-height: 1.5em;
+  opacity: 0;
+}
+.card .card-container .card1 h2 {
+  text-transform: uppercase;
+  padding-top: 1em;
+  color: white;
+  font-size: 2.5em;
+  font-weight: 900;
+  opacity: 1;
+}
+.card .card-container .card2 {
+  border-radius: 2em;
+  width: 30%;
+  background-image: url("Dino.avif");
+  height: 95vh;
+  padding: 2em;
+  background-size: cover;
+  background-position: center;
+  transition: all ease 1s;
+}
+.card .card-container .card2 h1 {
+  text-transform: uppercase;
+  padding-top: 1em;
+  color: black;
+  font-size: 3em;
+  font-weight: 900;
+  opacity: 0;
+}
+.card .card-container .card2 p {
+  color: black;
+  padding-top: 0.5em;
+  font-size: 1.3em;
+  line-height: 1.5em;
+  opacity: 0;
+}
+.card .card-container .card2 h3 {
+  text-transform: uppercase;
+  padding-top: 4.5em;
+  color: white;
+  font-size: 1.5em;
+  font-weight: 900;
+  opacity: 1;
+}
+.card .card-container .card2 h2 {
+  text-transform: uppercase;
+  color: white;
+  font-size: 2.5em;
+  font-weight: 900;
+  opacity: 1;
+}
+.card .card-container .card3 {
+  border-radius: 2em;
+  width: 30%;
+  background-image: url("home-lessons.avif");
+  height: 95vh;
+  padding: 2em;
+  background-size: cover;
+  background-position: center;
+  transition: all ease 1s;
+}
+.card .card-container .card3 h1 {
+  text-transform: uppercase;
+  padding-top: 1em;
+  color: black;
+  font-size: 3em;
+  font-weight: 900;
+  opacity: 0;
+}
+.card .card-container .card3 p {
+  color: black;
+  padding-top: 0.5em;
+  font-size: 1.3em;
+  line-height: 1.5em;
+  opacity: 0;
+}
+.card .card-container .card3 h2 {
+  text-transform: uppercase;
+  padding-top: 3em;
+  color: white;
+  font-size: 2.7em;
+  font-weight: 900;
+  opacity: 1;
+}
+.card .card1:hover {
+  background-color: #95C11E;
+  background-image: none;
+  will-change: transform;
+  transform: perspective(1000px) rotate3d(1, -1, 0, 5deg);
+  opacity: 1;
+}
+.card .card1:hover h2 {
+  opacity: 0;
+}
+.card .card1:hover h1 {
+  opacity: 1;
+  transform: translateZ(50px);
+}
+.card .card1:hover p {
+  opacity: 1;
+  transform: translateZ(50px);
+}
+.card .card2:hover {
+  background-color: #95C11E;
+  background-image: none;
+  transform: perspective(1000px) rotate3d(1, -1, 0, 5deg);
+  opacity: 1;
+}
+.card .card2:hover h3 {
+  opacity: 0;
+}
+.card .card2:hover h2 {
+  opacity: 0;
+}
+.card .card2:hover h1 {
+  opacity: 1;
+}
+.card .card2:hover p {
+  opacity: 1;
+}
+.card .card3:hover {
+  background-color: #95C11E;
+  background-image: none;
+  transform: perspective(1000px) rotate3d(1, -1, 0, 5deg);
+  opacity: 1;
+}
+.card .card3:hover h2 {
+  opacity: 0;
+}
+.card .card3:hover h1 {
+  opacity: 1;
+}
+.card .card3:hover p {
+  opacity: 1;
+}
+
+.sign-up {
+  width: 100%;
+  height: 40vh;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to left bottom, #95C11E, #95C11A);
+  overflow: hidden;
+}
+.sign-up img {
+  width: 20%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  image-orientation: flip;
+}
+.sign-up h1 {
+  width: 60%;
+  font-size: 1.8em;
+  padding: 0 3em;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+  color: black;
+}
+.sign-up .img1 {
+  width: 20%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  overflow: hidden;
+}
+
+.quotes {
+  width: 100%;
+  height: 100vh;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all ease-in 1s;
+}
+.quotes .para {
+  font-size: 1.8em;
+  font-weight: 800;
+  width: 60%;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.5em;
+}
+.quotes img {
+  position: absolute;
+  width: 5%;
+}
+.quotes .left {
+  left: 15%;
+  top: 20%;
+}
+.quotes .right {
+  bottom: 20%;
+  right: 25%;
+}
+
+.quotes:hover .left {
+  top: 28%;
+  left: 15%;
+}
+.quotes:hover .right {
+  bottom: 25%;
+}
+
+.idea {
+  width: 100%;
+  position: relative;
+}
+.idea h1 {
+  text-align: center;
+  font-size: 4.5em;
+  font-weight: 800;
+  color: black;
+  -webkit-text-stroke: 2px #95C11A;
+}
+.idea .container-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.2em;
+  position: absolute;
+  top: 70%;
+}
+.idea .container-info .container {
+  width: 25%;
+  height: 23vh;
+  border-radius: 1em;
+  background-color: #95C11A;
+  position: relative;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.idea .container-info .container img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  opacity: 0;
+  border-radius: 1em;
+}
+.idea .container-info .container h3 {
+  position: absolute;
+  left: 5%;
+  top: 20%;
+  color: black;
+  font-size: 2.3em;
+  text-align: center;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.idea .container-info .container-2 {
+  width: 25%;
+  height: 23vh;
+  border-radius: 1em;
+  background-color: #95C11A;
+  position: relative;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.idea .container-info .container-2 img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  opacity: 0;
+  border-radius: 1em;
+}
+.idea .container-info .container-2 h3 {
+  position: absolute;
+  left: 8%;
+  top: 35%;
+  color: black;
+  font-size: 2.3em;
+  text-align: center;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.idea .container-info .container:hover img {
+  opacity: 1;
+}
+.idea .container-info .container:hover h3 {
+  color: white;
+}
+.idea .container-info .container-2:hover img {
+  opacity: 1;
+}
+.idea .container-info .container-2:hover h3 {
+  color: white;
+}
+
+footer {
+  margin-top: 15em;
+  width: 100%;
+  height: 50vh;
+  color: black;
+  padding: 0 4em;
+  background-color: #95C11E;
+}
+footer .info {
+  padding-top: 5em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+footer .info .info1 {
+  width: 20%;
+  height: 15vh;
+}
+footer .info .info1 img {
+  width: 100%;
+  height: 100%;
+  image-rendering: 13500px;
+}
+footer .info .info2 {
+  width: 30%;
+}
+footer .info .info2 h3 {
+  font-size: 2em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+footer .info .info3 {
+  width: 30%;
+}
+footer .info .info3 h3 {
+  font-size: 2em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+footer .info .info4 {
+  width: 20%;
+}
+footer .info .info4 p {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+footer .info .info4 h3 {
+  font-size: 1.5em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+footer .copyright {
+  width: 100%;
+  margin-top: 5em;
+}
+footer .copyright p {
+  font-size: 1.3em;
+}
+
+@keyframes move {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+@media (max-width: 1080px) {
+  main {
+    width: 100%;
+  }
+  main .cursor-blur {
+    display: none;
+  }
+  main .head {
+    width: 100%;
+  }
+  main .head .video {
+    width: 100%;
+  }
+  main .head .video video {
+    aspect-ratio: 1/2;
+    overflow: hidden;
+  }
+  main .head .heading {
+    width: 100%;
+    top: 35%;
+    left: 0%;
+    padding: 1em;
+  }
+  main .head .heading h1 {
+    padding-left: 0.1em;
+    font-size: 3em;
+    color: black;
+  }
+  main .head .heading h1:before {
+    color: white;
+    bottom: -10px;
+    right: -10px;
+  }
+  main .head .heading h3 {
+    padding-top: 1em;
+    padding-left: 0.5em;
+    font-size: 1.5em;
+  }
+  main .head .heading p {
+    padding: 1em 0;
+    opacity: 0.8;
+    font-size: 1.3em;
+  }
+  main .head .arrow {
+    top: 70%;
+    left: -15%;
+    width: 50%;
+  }
+  main .head .marquee {
+    background-color: transparent;
+  }
+  main .head .marquee .text-marquee {
+    font-size: 0.5em;
+    font-weight: 900;
+    color: black;
+    text-transform: uppercase;
+  }
+  main .head nav {
+    width: 100%;
+    padding: 1em;
+  }
+  main .head nav img {
+    width: 20%;
+  }
+  main .head nav ul {
+    display: none;
+  }
+  main .head nav .sidebar i {
+    color: #021709;
+  }
+  main .head nav .sidebar a {
+    color: #021709;
+  }
+  main .head nav .menu {
+    display: initial;
+  }
+  main .about-us {
+    width: 100%;
+    padding: 1.5em;
+  }
+  main .about-us .image {
+    width: 100%;
+    gap: 1em;
+  }
+  main .about-us .image .image1 {
+    width: 50%;
+  }
+  main .about-us .image .image1 img {
+    border-radius: 0.5em;
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  main .about-us .about-info {
+    width: 100%;
+    padding-top: 2em;
+    text-align: center;
+    position: initial;
+  }
+  main .about-us .about-info h1 {
+    font-size: 2em;
+  }
+  main .about-us .about-info p {
+    padding-top: 0.5em;
+    font-size: 1.1em;
+    line-height: 1.5em;
+  }
+  main .about-us .about-info span {
+    padding-top: 0.5em;
+    font-size: 1em;
+  }
+  main .card {
+    padding: 0.5em;
+  }
+  main .card .card-container {
+    flex-direction: column;
+  }
+  main .card .card-container .card1 {
+    width: 100%;
+    height: 0%;
+    aspect-ratio: 1/1;
+    border-radius: 1em;
+  }
+  main .card .card-container .card1 h1 {
+    padding-top: 1em;
+    font-size: 1.5em;
+  }
+  main .card .card-container .card1 p {
+    padding-top: 0.5em;
+    font-size: 1.1em;
+  }
+  main .card .card-container .card1 h2 {
+    text-transform: uppercase;
+    padding-top: 1.5em;
+    font-size: 1.5em;
+  }
+  main .card .card-container .card2 {
+    width: 100%;
+    height: 35vh;
+    aspect-ratio: 1/1;
+    border-radius: 1em;
+  }
+  main .card .card-container .card2 h1 {
+    padding-top: 1em;
+    font-size: 1.5em;
+  }
+  main .card .card-container .card2 p {
+    padding-top: 0.5em;
+    font-size: 1.1em;
+  }
+  main .card .card-container .card2 h2 {
+    font-size: 1.5em;
+  }
+  main .card .card-container .card2 h3 {
+    padding: 0;
+    padding-top: 1.3em;
+    font-size: 1em;
+  }
+  main .card .card-container .card3 {
+    width: 100%;
+    height: 35vh;
+    aspect-ratio: 1/1;
+    border-radius: 1em;
+  }
+  main .card .card-container .card3 h1 {
+    padding-top: 1em;
+    font-size: 1.5em;
+  }
+  main .card .card-container .card3 p {
+    padding-top: 0.5em;
+    font-size: 1.1em;
+  }
+  main .card .card-container .card3 h2 {
+    padding: 0;
+    padding-top: 1.5em;
+    font-size: 1.5em;
+  }
+  main .sign-up {
+    height: 15vh;
+  }
+  main .sign-up img {
+    width: 10%;
+  }
+  main .sign-up h1 {
+    width: 80%;
+    font-size: 1em;
+  }
+  main .sign-up .img1 {
+    width: 10%;
+  }
+  main .quotes {
+    opacity: 1;
+    height: 60vh;
+  }
+  main .quotes .para {
+    width: 85%;
+    font-size: 1.2em;
+  }
+  main .quotes img {
+    width: 10%;
+  }
+  main .quotes .left {
+    top: 5%;
+    left: 3%;
+  }
+  main .quotes .right {
+    bottom: 5%;
+    right: 3%;
+  }
+  main .quotes:hover .left {
+    top: 20%;
+    left: 5%;
+  }
+  main .quotes:hover .right {
+    bottom: 23%;
+    right: 10%;
+  }
+  main .idea {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+  }
+  main .idea h1 {
+    font-size: 1.7em;
+    font-weight: 500;
+    color: #95C11A;
+    background-color: transparent;
+  }
+  main .idea .container-info {
+    flex-direction: column;
+    gap: 1em;
+    padding: 0 1em;
+  }
+  main .idea .container-info .container {
+    width: 100%;
+    height: 15vh;
+  }
+  main .idea .container-info .container h3 {
+    top: 10%;
+    font-size: 2.5em;
+    color: white;
+  }
+  main .idea .container-info .container img {
+    opacity: 1;
+  }
+  main .idea .container-info .container-2 {
+    width: 100%;
+    height: 15vh;
+  }
+  main .idea .container-info .container-2 h3 {
+    left: 10%;
+    color: white;
+  }
+  main .idea .container-info .container-2 img {
+    opacity: 1;
+  }
+  main footer {
+    height: 80vh;
+    padding: 0 2em;
+    margin-top: 30em;
+  }
+  main footer .info {
+    width: 100%;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    align-items: flex-start;
+  }
+  main footer .info .info1 {
+    margin-top: 1.5em;
+    width: 30%;
+  }
+  main footer .info .info1 img {
+    image-rendering: 11025px;
+  }
+  main footer .info .info2 {
+    width: 100%;
+  }
+  main footer .info .info2 h3 {
+    font-size: 1.3em;
+    line-height: 1.7em;
+  }
+  main footer .info .info3 {
+    width: 100%;
+  }
+  main footer .info .info3 h3 {
+    font-size: 1.4em;
+    line-height: 1.7em;
+  }
+  main footer .info .info4 {
+    margin-top: 2em;
+    width: 100%;
+  }
+  main footer .info .info4 h3 {
+    font-family: 1.1em;
+  }
+  main footer .copyright {
+    margin-top: 3em;
+  }
+  main footer .copyright p {
+    font-size: 1.1em;
+  }
+}
